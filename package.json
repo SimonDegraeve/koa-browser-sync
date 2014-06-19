@@ -1,0 +1,26 @@
+{
+  "name": "koa-browser-sync",
+  "version": "0.0.1",
+  "description": "BrowserSync middleware for Koa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:SimonDegraeve/koa-browser-sync.git"
+  },
+  "keywords": [
+    "browsersync",
+    "browser-sync",
+    "koa",
+    "koajs",
+    "koa-middleware"
+  ],
+  "author": "Simon Degraeve",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SimonDegraeve/koa-browser-sync/issues"
+  },
+  "homepage": "https://github.com/SimonDegraeve/koa-browser-sync"
+}
