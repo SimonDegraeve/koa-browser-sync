@@ -20,6 +20,8 @@ There is two ways to use this module.
 
 **1) Start `browser-sync` and inject the snippet with `init: true` (This option is set to false by default).**
 
+See the [BrowserSync docs](https://github.com/shakyShane/browser-sync/wiki/Options) for initialization options.
+
 ```js
 var koa = require('koa');
 var app = koa();
@@ -37,7 +39,6 @@ app.use(function *(){
 
 app.listen(3000);
 ```
-See the [BrowserSync docs](https://github.com/shakyShane/browser-sync/wiki/Options) for initialization options.
 
 
 **2) Get the snippet from BROWSERSYNC_SNIPPET environment variable (usefull to start `browser-sync` from a build tool like gulp, grunt, etc)**
@@ -62,7 +63,7 @@ app.listen(3000);
 Notes
 -------------
 - All the options are passed directly to `browser-sync`.
-- Injection only happens on responses with a Content-Type header of text/html and content containing a closing body tag (</body>).
+- Injection only happens on responses with a Content-Type header of text/html and content containing a closing body tag.
 
 
 Licence
