@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/SimonDegraeve/koa-browser-sync/issues"
   },
-  "homepage": "https://github.com/SimonDegraeve/koa-browser-sync"
+  "homepage": "https://github.com/SimonDegraeve/koa-browser-sync",
+  "dependencies": {
+    "stream-injecter": "0.0.1",
+    "browser-sync": "0.9.1",
+    "thunkify": "2.1.2"
+  }
 }
