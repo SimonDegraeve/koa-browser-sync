@@ -2,6 +2,7 @@ koa-browser-sync
 ================
 
 [BrowserSync](http://browsersync.io/) middleware for [Koa](http://koajs.com/).
+
 Use this middleware to automatically inject the necessary BrowserSync snippet into your HTML pages.
 
 Installation
