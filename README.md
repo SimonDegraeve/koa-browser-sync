@@ -18,7 +18,7 @@ Usage
 There is two ways to use this module.
 
 
-**1) Start `browser-sync` and inject the snippet with `init: true` (This option is set to false by default).**
+####1) Start `browser-sync` and inject the snippet with `init: true` (This option is set to false by default).
 
 See the [BrowserSync docs](https://github.com/shakyShane/browser-sync/wiki/Options) for initialization options.
 
@@ -41,7 +41,7 @@ app.listen(3000);
 ```
 
 
-**2) Get the snippet from BROWSERSYNC_SNIPPET environment variable (usefull to start `browser-sync` from a build tool like gulp, grunt, etc)**
+####2) Get the snippet from BROWSERSYNC_SNIPPET environment variable (usefull to start `browser-sync` from a build tool like gulp, grunt, etc)
 
 ```js
 var koa = require('koa');
