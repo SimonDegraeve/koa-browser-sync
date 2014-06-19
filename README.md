@@ -63,7 +63,7 @@ app.listen(3000);
 Notes
 -------------
 - All the options are passed directly to `browser-sync`.
-- Injection only happens on responses with a Content-Type header of `text/html` and content containing a closing body tag (`</body>`).
+- Injection only happens on responses with a Content-Type header of `text/html` and containing a closing body tag (`</body>`).
 
 
 Licence
