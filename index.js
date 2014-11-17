@@ -15,7 +15,7 @@ module.exports = function(opts) {
 
     if (opts.init) {
       if (!bs) bs = yield browserSync(null, opts);
-      snippet = bs[0].api.snippet
+      snippet = bs[0].options.snippet
     } else {
       snippet = process.env.BROWSERSYNC_SNIPPET;
     }
