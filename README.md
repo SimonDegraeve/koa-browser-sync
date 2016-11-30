@@ -33,8 +33,8 @@ if (app.env == 'development') {
   app.use(require('koa-browser-sync')({init: true}));
 }
 
-app.use(function *(){
-  this.body = '<html><body>Hello World</body></html>';
+app.use(function (ctx, next){
+  ctx.body = '<html><body>Hello World</body></html>';
 });
 
 app.listen(3000);
@@ -53,8 +53,8 @@ if (app.env == 'development') {
   app.use(require('koa-browser-sync')();
 }
 
-app.use(function *(){
-  this.body = '<html><body>Hello World</body></html>';
+app.use(function (ctx, next){
+  ctx.body = '<html><body>Hello World</body></html>';
 });
 
 app.listen(3000);

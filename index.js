@@ -1,6 +1,5 @@
 
-var thunkify       = require('thunkify');
-var browserSync    = thunkify(require('browser-sync').init);
+var browserSync    = require("browser-sync").create();
 var StreamInjecter = require('stream-injecter');
 
 module.exports = function(opts) {
@@ -10,42 +9,52 @@ module.exports = function(opts) {
   opts.init      = opts.init || false;
   opts.debugInfo = opts.debugInfo || false;
 
-  return function*(next) {
-    yield next;
+  return function(ctx, next) {
+    return next().then(function() {
+      if (opts.init) {
+        if (!bs) {
+          return new Promise(function(resolve, reject) {
+            return browserSync.init(opts, function (err, instance) {
+              if (err) {
+                return reject(err);
+              }
+              bs = instance;
+              return resolve(bs.getOption('snippet'));
+            });
+          });
+        }
+        return bs.getOption('snippet');
+      }
+      return process.env.BROWSERSYNC_SNIPPET;
+    }).then(function(snippet) {
 
-    if (opts.init) {
-      if (!bs) bs = yield browserSync(null, opts);
-      snippet = bs.getOption('snippet');
-    } else {
-      snippet = process.env.BROWSERSYNC_SNIPPET;
-    }
+      if (!snippet) return;
 
-    if (!snippet) return;
+      if (!(ctx.response.type && ~ctx.response.type.indexOf("text/html"))) return;
 
-    if (!(this.response.type && ~this.response.type.indexOf("text/html"))) return;
+      // Buffer
+      if (Buffer.isBuffer(ctx.body)) {
+        ctx.body = ctx.body.toString();
+      }
 
-    // Buffer
-    if (Buffer.isBuffer(this.body)) {
-      this.body = this.body.toString();
-    }
+      // String
+      if (typeof ctx.body === 'string') {
+        if (ctx.body.match(/client\/browser-sync-client/)) return;
+        ctx.body = ctx.body.replace(/<\/body>/, snippet + '</body>');
+      }
 
-    // String
-    if (typeof this.body === 'string') {
-      if (this.body.match(/client\/browser-sync-client/)) return;
-      this.body = this.body.replace(/<\/body>/, snippet + '</body>');
-    }
-
-    // Stream
-    if (this.body && typeof this.body.pipe === 'function') {
-      var injecter = new StreamInjecter({
-        matchRegExp: /(<\/body>)/,
-        inject:      snippet,
-        replace:     snippet + '$1',
-        ignore:      /client\/browser-sync-client/
-      });
-      var size = +this.response.header['content-length'];
-      if (size) this.set('Content-Length', size + Buffer.byteLength(snippet));
-      this.body = this.body.pipe(injecter);
-    }
+      // Stream
+      if (ctx.body && typeof ctx.body.pipe === 'function') {
+        var injecter = new StreamInjecter({
+          matchRegExp: /(<\/body>)/,
+          inject:      snippet,
+          replace:     snippet + '$1',
+          ignore:      /client\/browser-sync-client/
+        });
+        var size = +ctx.response.header['content-length'];
+        if (size) ctx.set('Content-Length', size + Buffer.byteLength(snippet));
+        ctx.body = ctx.body.pipe(injecter);
+      }
+    });
   };
 };

@@ -1,6 +1,6 @@
 {
   "name": "koa-browser-sync",
-  "version": "0.0.3",
+  "version": "1.0.1",
   "description": "BrowserSync middleware for Koa",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,6 @@
   "homepage": "https://github.com/SimonDegraeve/koa-browser-sync",
   "dependencies": {
     "stream-injecter": "0.0.1",
-    "browser-sync": "2.18.2",
-    "thunkify": "2.1.2"
+    "browser-sync": "2.18.2"
   }
 }
