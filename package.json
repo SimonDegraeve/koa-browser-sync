@@ -25,7 +25,7 @@
   "homepage": "https://github.com/SimonDegraeve/koa-browser-sync",
   "dependencies": {
     "stream-injecter": "0.0.1",
-    "browser-sync": "1.6.5",
+    "browser-sync": "2.18.2",
     "thunkify": "2.1.2"
   }
 }
