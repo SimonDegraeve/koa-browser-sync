@@ -20,7 +20,7 @@ There is two ways to use this module.
 
 ####1) Start `browser-sync` and inject the snippet with `init: true` (This option is set to false by default).
 
-See the [BrowserSync docs](https://github.com/shakyShane/browser-sync/wiki/Options) for initialization options.
+See the [BrowserSync docs](https://browsersync.io/docs/options/) for initialization options.
 
 ```js
 var koa = require('koa');
