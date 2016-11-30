@@ -44,7 +44,7 @@ module.exports = function(opts) {
         ignore:      /client\/browser-sync-client/
       });
       var size = +this.response.header['content-length'];
-      if (size) this.set('Content-Length', size + snippet.length);
+      if (size) this.set('Content-Length', size + Buffer.byteLength(snippet));
       this.body = this.body.pipe(injecter);
     }
   };
