@@ -5,11 +5,13 @@ koa-browser-sync
 
 Use this middleware to automatically inject the necessary `browser-sync` snippet into your HTML pages.
 
+
 Installation
 -------------
 
 ```shell
 npm install koa-browser-sync --save-dev
+// Use 0.x.x for Koa@1 and 1.x.x for Koa@2
 ```
 
 
